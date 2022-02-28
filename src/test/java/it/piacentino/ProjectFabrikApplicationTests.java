@@ -60,7 +60,7 @@ class ProjectFabrikApplicationTests {
 				ra.andExpect(status().isOk());
 				ra.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
 				ra.andExpect(jsonPath("$").exists());//("DROGHERIA ALIMENTARE")) 
-				ra.andExpect(jsonPath("$").value("6.26")); 
+				ra.andExpect(jsonPath("$").value("8.4")); 
 				ra.andDo(print());
 	}
 
@@ -148,6 +148,7 @@ class ProjectFabrikApplicationTests {
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isNotFound())
+				.andExpect(jsonPath("$.info.code").value("95"))
 				.andDo(print());
 	}	
 }
